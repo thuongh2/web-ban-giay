@@ -1,3 +1,17 @@
 .cardMain{
     border: none;
+
+    &:hover{
+        cursor: pointer;
+    }
+
+    .card-text{
+        text-align: center;
+    }
+}
+
+@media only screen and (max-width: 720px){
+    .card{
+        width: 100px !important;
+    }
 }

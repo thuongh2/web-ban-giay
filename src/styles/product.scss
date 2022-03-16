@@ -1,6 +1,29 @@
 .products {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    grid-gap: 50px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-gap: 50px;
+  margin-left: 60px;
+}
 
+.headerProduct {
+  text-align: center;
+  margin: 36px 0 36px 0;
+}
+
+@media only screen and (max-width: 720px) {
+  .container {
+    margin: 0 !important;
+
+    .products {
+      margin-left: 0 !important;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      grid-gap: 10px;
+      justify-content:center !important;
+      position: relative;
+
+      .card{
+        margin-left:36px !important;
+      }
+    }
+  }
 }

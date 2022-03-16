@@ -9,6 +9,8 @@ function App() {
       <Header />
       <SliderBar/>
       <Product/>
+      <Product/>
+      <Product/>
     </div>
   );
 }

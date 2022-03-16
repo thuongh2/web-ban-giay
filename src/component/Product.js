@@ -5,21 +5,18 @@ import CardItem from "./Card";
 export default function Product() {
   return (
     <div className="container">
-      <div>
+      <div className="headerProduct">
         <h2>Spring&Summer Models</h2>
       </div>
-    <div className="products">
-      <CardItem className="productCard"  />
-      <CardItem className="productCard" />
-      <CardItem className="productCard"/>
-      <CardItem className="productCard"/>
-      <CardItem className="productCard" />
-      <CardItem className="productCard"/>
-    </div>
-    
-    
-    
-     
+      <div className="products">
+        <CardItem className="productCard" />
+        <CardItem className="productCard" />
+        <CardItem className="productCard" />
+        <CardItem className="productCard" />
+        <CardItem className="productCard" />
+        <CardItem className="productCard" />
+      </div>
+
       {/* <div className="cardItem">
         <div>
           <div>
