@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/web-ban-giay/static/css/main.de4cb57b.css",
+    "main.js": "/web-ban-giay/static/js/main.d7c38806.js",
+    "static/js/787.d3c19229.chunk.js": "/web-ban-giay/static/js/787.d3c19229.chunk.js",
+    "index.html": "/web-ban-giay/index.html",
+    "main.de4cb57b.css.map": "/web-ban-giay/static/css/main.de4cb57b.css.map",
+    "main.d7c38806.js.map": "/web-ban-giay/static/js/main.d7c38806.js.map",
+    "787.d3c19229.chunk.js.map": "/web-ban-giay/static/js/787.d3c19229.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.de4cb57b.css",
+    "static/js/main.d7c38806.js"
+  ]
+}
