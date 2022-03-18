@@ -73,11 +73,5 @@ export const products = [
         src : 'https://cdn.shopify.com/s/files/1/1241/4530/products/OasisRED2938copy_360x.png?v=1624431841',
         price: 150000
     },
-    {
-        id: 7,
-        name:  'Atom Oasis Red',
-        src : 'https://scontent.fsgn5-12.fna.fbcdn.net/v/t1.6435-9/156646579_817109292210079_3937944351548149175_n.jpg?_nc_cat=103&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=NPg-Af23wI8AX_xLJkn&_nc_ht=scontent.fsgn5-12.fna&oh=00_AT82y4KENRK2k1B5tAT-kQNGQFYt_Bifx4E3lMSmCgYOaw&oe=62576D0E',
-        price: 150000
-    }
 
 ]

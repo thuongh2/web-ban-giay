@@ -6,6 +6,7 @@ import Footer from './component/Footer';
 import Login from './component/Login'
 import Register from './component/Register';
 import ProductDetail from './component/ProductDetail';
+import YourCard from './component/YourCard';
 
 function App() {
   return (
@@ -18,7 +19,8 @@ function App() {
       <Footer/> */}
       {/* <Login /> */}
       {/* <Register /> */}
-      <ProductDetail />
+      {/* <ProductDetail /> */}
+      <YourCard />
     </div>
   );
 }

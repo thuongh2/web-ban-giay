@@ -1,0 +1,36 @@
+.table {
+  width: 1000px;
+  color: #333;
+  margin: 20px auto;
+
+  .tableTitle{
+    text-align: center;
+  }
+
+  tbody {
+    .productInfo {
+      display: flex;
+      padding: 20px;
+      img {
+        width: 200px;
+        height: 150px;
+      }
+
+      .productName {
+        margin-left: 36px;
+        text-align: left; 
+        h5 {
+          font-weight: 400;
+        }
+      }
+    }
+
+    .quantity{
+        width: 100px;
+
+        .quantityInput {
+            width: 50px;
+        }
+    }
+  }
+}

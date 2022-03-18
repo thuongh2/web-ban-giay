@@ -1,5 +1,5 @@
 import React from "react";
-import '../styles/footer.scss'
+import "../styles/footer.scss";
 
 const Footer = () => (
   <footer className="page-footer font-small blue pt-4">
@@ -15,37 +15,34 @@ const Footer = () => (
         <hr className="clearfix w-100 d-md-none pb-0" />
 
         <div className="col-md-3 mb-md-0 mb-3">
-          <h5 className="text-uppercase">Links</h5>
+          <h5 className="text-uppercase">Social</h5>
           <ul className="list-unstyled">
             <li>
-              <a href="#!">Link 1</a>
+              <a href="#!">Facebook</a>
             </li>
             <li>
-              <a href="#!">Link 2</a>
+              <a href="#!">YouTube</a>
             </li>
             <li>
-              <a href="#!">Link 3</a>
+              <a href="#!">Instagram</a>
             </li>
             <li>
-              <a href="#!">Link 4</a>
+              <a href="#!">Twitter</a>
             </li>
           </ul>
         </div>
 
         <div className="col-md-3 mb-md-0 mb-3">
-          <h5 className="text-uppercase">Links</h5>
+          <h5 className="text-uppercase">Activity</h5>
           <ul className="list-unstyled">
             <li>
-              <a href="#!">Link 1</a>
+              <a href="#!">Influencers</a>
             </li>
             <li>
-              <a href="#!">Link 2</a>
+              <a href="#!">Giveaway</a>
             </li>
             <li>
-              <a href="#!">Link 3</a>
-            </li>
-            <li>
-              <a href="#!">Link 4</a>
+              <a href="#!">Honor</a>
             </li>
           </ul>
         </div>

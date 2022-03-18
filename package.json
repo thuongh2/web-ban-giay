@@ -15,6 +15,7 @@
     "react-dom": "^17.0.2",
     "react-horizontal-scrolling-menu": "^2.7.1",
     "react-icons": "^4.3.1",
+    "react-input-number": "^5.0.19",
     "react-responsive-carousel": "^3.2.23",
     "react-scripts": "5.0.0",
     "sass": "^1.49.9",
