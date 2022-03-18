@@ -2,6 +2,7 @@ import { Row } from "react-bootstrap";
 import "../styles/product.scss";
 import CardItem from "./Card";
 import { products } from "../data/header";
+import { Link } from "react-router-dom";
 
 export default function Product() {
   return (
@@ -11,12 +12,15 @@ export default function Product() {
       </div>
       <div className="products">
         {products.map((product) => (
-          <CardItem
-            className="productCard"
-            image={product.src}
-            name={product.name}
-            price={product.price}
-          />
+          <Link className=" text-secondary text-decoration-none" to={`/product/${product.id}`}  key={product.id}>
+            <CardItem
+              key={product.id}
+              className="productCard"
+              image={product.src}
+              name={product.name}
+              price={product.price}
+            />
+          </Link>
         ))}
       </div>
 

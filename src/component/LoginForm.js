@@ -1,4 +1,5 @@
 import { Form, Button } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import "../styles/loginForm.scss";
 
 function LoginForm() {
@@ -26,7 +27,7 @@ function LoginForm() {
         <a>Forgot your password?</a>
       </div>
       <div className = "mb-3">
-        <a>Create account</a>
+        <Link className=" text-dark text-decoration-none" to="/register">Create account</Link>
       </div>
     </div>
   );

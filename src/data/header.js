@@ -14,6 +14,11 @@ export const headerItem = [
         name: "Accessories",
         src: "#"
     },
+    {
+        id: 1,
+        name: "Outlet",
+        src: "#"
+    },
 
 ]
 

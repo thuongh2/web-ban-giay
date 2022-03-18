@@ -6,7 +6,7 @@ import '../styles/productCarousel.scss'
 
 export default function ProductCarousel() {
   return (
-    <Carousel className="carousel">
+    <Carousel className="carouselProduct">
       <div>
         <img src="https://cdn.shopify.com/s/files/1/1241/4530/products/MateriaOlimpiaBlack_perfil_1024x1024@2x.jpg?v=1579770058" />
       </div>

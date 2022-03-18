@@ -4,6 +4,7 @@ import { BsFillPersonFill } from "react-icons/bs";
 import { FiShoppingCart } from "react-icons/fi";
 import { TiDocumentText } from "react-icons/ti";
 import { headerItem } from "../data/header";
+import { Link } from "react-router-dom";
 
 export default function Header() {
   console.log(headerItem);
@@ -13,21 +14,19 @@ export default function Header() {
         <ul>
           {headerItem.map((item) => (
             <li>
-              <a href="#">{item.name}</a>
+              <Link className="linkDecoration" to={`/collections/${item.name}`}>{item.name}</Link>
             </li>
           ))}
-          <li>
-            <a href="#" className="text-danger">
-              Outlet
-            </a>
-          </li>
         </ul>
       </div>
       <div className="logo">
-        <img
-          className="imageLogo"
-          src="https://cdn.shopify.com/s/files/1/1241/4530/files/logo_home_360x.png?v=1582201056"
-        />
+        <Link to="/">
+          {/* <img
+            className="imageLogo"
+            src="https://cdn.shopify.com/s/files/1/1241/4530/files/logo_home_360x.png?v=1582201056"
+          /> */}
+          <h3 >THUONG</h3>
+        </Link>
       </div>
       <div className="info">
         <div className="infoItem">
@@ -37,16 +36,20 @@ export default function Header() {
           </div>
         </div>
         <div className="infoItem">
-          <BsFillPersonFill size={27} color={"royalblue"} />
+          <Link to="/login">
+            <BsFillPersonFill size={27} color={"royalblue"} />
+          </Link>
         </div>
         <div className="infoItem">
-          <FiShoppingCart size={27} />
+          <Link to="/cart">
+            <FiShoppingCart size={27} />
+          </Link>
         </div>
         <div className="dropDown infoItem">
-          <TiDocumentText size={27}/>
+          <TiDocumentText size={27} />
           <div className="dropDownItem">
             {headerItem.map((item) => (
-              <div className = "itemDrop">
+              <div className="itemDrop">
                 <a href="#">{item.name}</a>
               </div>
             ))}
