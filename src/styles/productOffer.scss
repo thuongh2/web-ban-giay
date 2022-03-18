@@ -1,0 +1,22 @@
+.productOffer{
+    margin-top: 50px !important;
+
+    h3{
+        margin-left: 42px;
+    }
+
+    .cardMain {
+        width: 320px;
+    }
+
+}
+
+@media only screen and (max-width: 720px){
+    h3{
+        margin-left: 12px !important;
+    }
+
+    .cardMain {
+        width: 130px !important;
+    }
+}

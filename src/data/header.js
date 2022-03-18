@@ -14,11 +14,6 @@ export const headerItem = [
         name: "Accessories",
         src: "#"
     },
-    {
-        id: 1,
-        name: "Outlet",
-        src: "#"
-    },
 
 ]
 
@@ -39,4 +34,50 @@ export const imageCarosel = [
         id: 4,
         src: 'https://scontent.fsgn5-6.fna.fbcdn.net/v/t39.30808-6/275834374_334149168732693_8006455162809208934_n.jpg?stp=dst-jpg_p600x600&_nc_cat=108&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=ct84wlTLn54AX9zXL86&_nc_oc=AQkFDQzWsiuDiM5tb3_uTSjeXjKV5fQuTIfbrEoPMh2oGj3ezgcKzUjnmc_GX-sucbr4W63d44dH6Y2tlejc6wAq&_nc_ht=scontent.fsgn5-6.fna&oh=00_AT-xj-0RAsG_lX7oKJzZjf3wGZacvbFJ-rUBU3RtoLo64w&oe=623466EB'
     },
+]
+
+export const products = [
+    {
+        id: 1,
+        name:  'Atom Oasis Red',
+        src : 'https://cdn.shopify.com/s/files/1/1241/4530/products/OasisRED2938copy_360x.png?v=1624431841',
+        price: 150000
+    },
+    {
+        id: 2,
+        name:  'Materia Stone',
+        src : 'https://cdn.shopify.com/s/files/1/1241/4530/products/VolcanoWhitePerfil_360x.jpg?v=1538979057',
+        price: 150000
+    },
+    {
+        id: 3,
+        name:  'Solar Black',
+        src : 'https://cdn.shopify.com/s/files/1/1241/4530/products/SOLARBLACK1_360x.jpg?v=1640349647',
+        price: 150000
+    },
+    {
+        id: 4,
+        name:  'Alpha Neo Pink',
+        src : 'https://cdn.shopify.com/s/files/1/1241/4530/products/AlphaNEOPINKsilueta02_360x.jpg?v=1624939921',
+        price: 150000
+    },
+    {
+        id: 5,
+        name:  'Atom Oasis Red',
+        src : 'https://cdn.shopify.com/s/files/1/1241/4530/products/OasisRED2938copy_360x.png?v=1624431841',
+        price: 150000
+    },
+    {
+        id: 6,
+        name:  'Atom Oasis Red',
+        src : 'https://cdn.shopify.com/s/files/1/1241/4530/products/OasisRED2938copy_360x.png?v=1624431841',
+        price: 150000
+    },
+    {
+        id: 7,
+        name:  'Atom Oasis Red',
+        src : 'https://scontent.fsgn5-12.fna.fbcdn.net/v/t1.6435-9/156646579_817109292210079_3937944351548149175_n.jpg?_nc_cat=103&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=NPg-Af23wI8AX_xLJkn&_nc_ht=scontent.fsgn5-12.fna&oh=00_AT82y4KENRK2k1B5tAT-kQNGQFYt_Bifx4E3lMSmCgYOaw&oe=62576D0E',
+        price: 150000
+    }
+
 ]

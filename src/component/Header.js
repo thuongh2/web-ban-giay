@@ -3,7 +3,6 @@ import { BiSearchAlt2 } from "react-icons/bi";
 import { BsFillPersonFill } from "react-icons/bs";
 import { FiShoppingCart } from "react-icons/fi";
 import { TiDocumentText } from "react-icons/ti";
-import { Dropdown } from "react-bootstrap";
 import { headerItem } from "../data/header";
 
 export default function Header() {

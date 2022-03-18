@@ -1,0 +1,16 @@
+.loginForm {
+
+    .formInput{
+        width: 400px !important;
+    }
+}
+
+
+@media only screen and (max-width: 720px){
+    .loginForm {
+
+        .formInput{
+            width: 300px !important;
+        }
+    }
+}

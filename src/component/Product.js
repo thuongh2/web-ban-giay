@@ -1,6 +1,7 @@
 import { Row } from "react-bootstrap";
 import "../styles/product.scss";
 import CardItem from "./Card";
+import { products } from "../data/header";
 
 export default function Product() {
   return (
@@ -9,12 +10,14 @@ export default function Product() {
         <h2>Spring&Summer Models</h2>
       </div>
       <div className="products">
-        <CardItem className="productCard" />
-        <CardItem className="productCard" />
-        <CardItem className="productCard" />
-        <CardItem className="productCard" />
-        <CardItem className="productCard" />
-        <CardItem className="productCard" />
+        {products.map((product) => (
+          <CardItem
+            className="productCard"
+            image={product.src}
+            name={product.name}
+            price={product.price}
+          />
+        ))}
       </div>
 
       {/* <div className="cardItem">

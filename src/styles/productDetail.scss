@@ -1,0 +1,28 @@
+.productDetail {
+  .product {
+    margin-top: 26px;
+    display: flex;
+    justify-content: center;
+
+    .productDiscription {
+      width: 400px;
+      word-wrap: break-word;
+      text-align: justify;
+      margin-left: 20px;
+    }
+  }
+}
+
+@media only screen and (max-width: 720px) {
+  .productDetail {
+    .product {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      .productDiscription {
+        width: 360px;
+      }
+    }
+  }
+}
