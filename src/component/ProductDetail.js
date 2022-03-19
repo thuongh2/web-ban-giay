@@ -4,8 +4,17 @@ import Footer from "./Footer";
 import Header from "./Header";
 import ProductCarousel from "./ProductCarousel";
 import ProductOffer from "./ProductOffer";
+import { useState, useEffect } from "react";
+import { collection, query, onSnapshot, where } from "firebase/firestore";
+import { db } from "../firebase.js";
+import { useParams } from "react-router-dom";
 
 export default function ProductDetail() {
+
+  let { productId} = useParams();
+
+  console.log(productId);
+
   return (
     <div className="productDetail">
       <Header />
@@ -17,27 +26,7 @@ export default function ProductDetail() {
         </div>
         <div className="productDiscription">
           {/* disciption */}
-          <p>
-            One another year, as a Star Wars movie, a new redesign of our
-            Materia returns. This time we introduce Materia Olimpia, the new
-            standard bearer of the maximum sports performance of Muroexe.
-          </p>
-          <p>
-            The recipe for this model is very simple, take note: A base of our
-            iconic Materia sole, we add a surface in polyester, elastane and
-            cotton (always technical), we put some reinforced heel to facilitate
-            the fit and serve it with a unique thermosealed tongue.
-          </p>
-          <p>
-            Oh and don't forget that it has our 2 pieces of anti-slip rubber. We
-            don't want you to suffer any slip this season.
-          </p>
-          <p>
-            lorem ipsum dolor sit amet, consectetur adip lorem ipsum dolor sit
-            amet, consectetur adip lorem ipsum dolor sit amet, consectetur adip
-            lorem ipsum dolor sit amet, consectetur adip{" "}
-          </p>
-
+          
           <AddCard />
         </div>
       </div>

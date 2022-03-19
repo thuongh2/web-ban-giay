@@ -1,5 +1,11 @@
 .cardMain{
     border: none;
+    width: 250px;
+
+    img {
+        max-width: 520px;
+        max-height: 345px;
+    }
 
     &:hover{
         cursor: pointer;
