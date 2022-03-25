@@ -5,18 +5,18 @@ import { Link } from "react-router-dom";
 import {useState, useEffect} from 'react'
 import {collection, query, onSnapshot} from "firebase/firestore"
 import {db} from '../firebase.js'
+import axios from 'axios';
 
 export default function Product() {
   const [tasks, setTasks] = useState([])
 
-  useEffect(() => {
-    const q = query(collection(db, '20133012'))
-    onSnapshot(q, (querySnapshot) => {
-      setTasks(querySnapshot.docs.map(doc => ({
-        id: doc.id,
-        data: doc.data()
-      })))
+  useEffect(async() => {
+    await axios.get(`http://127.0.0.1:8080/products`)
+    .then(res => {
+      const persons = res.data;
+      setTasks(persons);
     })
+    .catch(error => console.log(error));
   },[])
 
   console.log(tasks)
@@ -28,13 +28,13 @@ export default function Product() {
       </div>
       <div className="products">
         {tasks.map((product) => (
-          <Link className=" text-secondary text-decoration-none" to={`/product/${product.id}`}  key={product.id}>
+          <Link className=" text-secondary text-decoration-none" to={`/product/${product.code}`}  key={product.code}>
             <CardItem
-              key={product.id}
+              key={product.code}
               className="productCard"
-              image={product.data.image}
-              name={product.data.name}
-              price={product.data.price}
+              image={product.image}
+              name={product.name}
+              price={product.price}
             />
           </Link>
         ))}

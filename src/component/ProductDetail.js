@@ -5,15 +5,32 @@ import Header from "./Header";
 import ProductCarousel from "./ProductCarousel";
 import ProductOffer from "./ProductOffer";
 import { useState, useEffect } from "react";
-import { collection, query, onSnapshot, where } from "firebase/firestore";
-import { db } from "../firebase.js";
 import { useParams } from "react-router-dom";
+import axios from "axios";
 
 export default function ProductDetail() {
+  const [product, setProduct] = useState([]);
 
-  let { productId} = useParams();
+  let { productId } = useParams();
 
   console.log(productId);
+
+  useEffect(() => {
+    const getProduct = async () => {
+      await axios
+        .get(`http://localhost:8080/product/${productId}`)
+        .then((res) => {
+          const persons = res.data;
+          console.log(persons);
+          setProduct(persons);
+        })
+        .catch((error) => console.log(error));
+    };
+
+    getProduct();
+
+    console.log(product);
+  }, []);
 
   return (
     <div className="productDetail">
@@ -25,8 +42,9 @@ export default function ProductDetail() {
           <ProductCarousel />
         </div>
         <div className="productDiscription">
-          {/* disciption */}
-          
+          <h3>{product.name}</h3>
+          <span>{product.price}</span>
+
           <AddCard />
         </div>
       </div>

@@ -8,16 +8,18 @@ import Register from "./component/Register";
 import ProductDetail from "./component/ProductDetail";
 import YourCard from "./component/YourCard";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import AddminProduct from "./component/AddminProduct";
 
 function App() {
   return (
     <div className="App">
-      <Header />
+      {/* <Header />
       <SliderBar />
       <Product />
       <Product />
       <Product />
-      <Footer />
+      <Footer /> */}
+      <AddminProduct />
     </div>
     /* //   {/* <Login /> */
     //   {/* <Register /> */}
