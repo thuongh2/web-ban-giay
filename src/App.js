@@ -10,15 +10,18 @@ import YourCard from "./component/YourCard";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import AddminProduct from "./component/AddminProduct";
 import ProductList from "./component/ProductList";
+import './App.css'
 
 function App() {
   return (
     <div className="App">
       <Header />
-      <SliderBar />
+      <div className="silerbar">
+        <SliderBar />
+      </div>
       <ProductList />
-      <Footer /> 
-     </div>
+      <Footer />
+    </div>
   );
 }
 
