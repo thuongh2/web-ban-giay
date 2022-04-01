@@ -10,17 +10,15 @@ import ProductItem from "./component/ProductItem";
 import Register from "./component/Register";
 import AdminPro from "./component/AdminPro";
 import AddminProduct from "./component/AddminProduct";
+import ProductCategory from "./component/ProductCategory";
 
 ReactDOM.render(
   <BrowserRouter>
     <Routes>
-      <Route path="/" element={<App />}>
-        <Route path="collections">
-          <Route path="collections/Men" element={<ProductItem />}></Route>
-          <Route path="collections/Women" element={<ProductItem />}></Route>
-          <Route path="collections/Accessories" element={<ProductItem />} />
-          <Route path="collections/Oulet" element={<ProductItem />}></Route>
-        </Route>
+      <Route path="" element={<App />} />
+    
+      <Route path="" element={<ProductItem />}>
+        <Route path=":name" element={<ProductCategory />} />
       </Route>
       <Route path="login" element={<Login />} />
       <Route path="register" element={<Register />} />

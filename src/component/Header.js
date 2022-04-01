@@ -4,16 +4,18 @@ import { BsFillPersonFill } from "react-icons/bs";
 import { FiShoppingCart } from "react-icons/fi";
 import { TiDocumentText } from "react-icons/ti";
 import { headerItem } from "../data/header";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+
 
 export default function Header() {
+  let navigate = useNavigate();
   return (
     <div className="header">
       <div className="item">
         <ul>
           {headerItem.map((item) => (
             <li>
-              <Link className="linkDecoration" to={`/collections/${item.name}`}>{item.name}</Link>
+              <Link className="linkDecoration" to={`/${item.name}`} >{item.name}</Link>
             </li>
           ))}
         </ul>
