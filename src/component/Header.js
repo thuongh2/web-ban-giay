@@ -7,7 +7,6 @@ import { headerItem } from "../data/header";
 import { Link } from "react-router-dom";
 
 export default function Header() {
-  console.log(headerItem);
   return (
     <div className="header">
       <div className="item">

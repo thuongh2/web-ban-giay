@@ -17,8 +17,10 @@ function AddminProduct() {
     code: "",
     name: "",
     price: "",
+    description: "",
   });
   const [tasks, setTasks] = useState([]);
+  const [data, setData] = useState([]);
 
   const uploadFileHandler = (event) => {
     setImageFile(event.target.files);
@@ -68,6 +70,7 @@ function AddminProduct() {
     formData.append(`code`, product.code);
     formData.append(`name`, product.name);
     formData.append(`price`, product.price);
+    formData.append(`description`, product.description);
     formData.append(`categoryId`, cat.id);
 
     await axios.post("http://localhost:8080/product/save", formData).then(
@@ -82,7 +85,8 @@ function AddminProduct() {
   };
 
   const handelRemove = async (code) => {
-    axios.get(`http://localhost:8080/product/delete/${code}`).then(
+    console.log(code);
+    axios.get(`http://localhost:8080/product/delete/${500}`).then(
       (response) => {
         console.log(response);
       },
@@ -136,12 +140,14 @@ function AddminProduct() {
           {
             Header: "action",
             accessor: "",
-            Cell: ({ cell: { code } }) => {
+            Cell: (code) => {
               return (
                 <>
                   <a>Update</a>
                   <div>
-                    
+                    <Button variant="danger" onClick={() => handelRemove(code)}>
+                      Danger
+                    </Button>
                   </div>
                 </>
               );
@@ -156,7 +162,7 @@ function AddminProduct() {
   return (
     <div className="container">
       <Header />
-      <Table columns={columns} data={tasks} />
+      {/* <Table columns={columns} data={tasks} /> */}
 
       <Form onSubmit={handleSubmit}>
         <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -183,6 +189,16 @@ function AddminProduct() {
             type="text"
             name="price"
             value={product.price}
+            onChange={handleChange}
+          />
+        </Form.Group>
+        <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
+          <Form.Label>Example textarea</Form.Label>
+          <Form.Control
+            as="textarea"
+            rows={3}
+            name="description"
+            value={product.description}
             onChange={handleChange}
           />
         </Form.Group>

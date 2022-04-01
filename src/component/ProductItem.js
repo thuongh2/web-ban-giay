@@ -5,6 +5,7 @@ import Footer from "./Footer";
 
 
 function ProductItem() {
+  
   return (
     <div className="App">
       <Header />

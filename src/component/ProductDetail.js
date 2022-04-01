@@ -43,9 +43,11 @@ export default function ProductDetail() {
         </div>
         <div className="productDiscription">
           <h3>{product.name}</h3>
-          <span>{product.price}</span>
-
-          <AddCard />
+          <div>
+            <span>{product.price}</span>
+          </div>
+          <span>{product.description}</span>
+          <AddCard product={product} />
         </div>
       </div>
       <ProductOffer />
