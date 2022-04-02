@@ -1,11 +1,13 @@
-// .carouselImage {
-//     height: 500px;
-// }
+.carouselImage {
+    height: 500px;
+}
 
 
 
-// @media only screen and (max-width: 768px) {
-//     .carouselCaption{
-//         display:none;
-//     }
-// }
+@media only screen and (max-width: 768px) {
+    .carousel-caption{
+        p {
+            display: none;
+        }
+    }
+}

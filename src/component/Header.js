@@ -5,17 +5,21 @@ import { FiShoppingCart } from "react-icons/fi";
 import { TiDocumentText } from "react-icons/ti";
 import { headerItem } from "../data/header";
 import { Link, useNavigate } from "react-router-dom";
-
+import { useEffect } from "react";
 
 export default function Header() {
-  let navigate = useNavigate();
+
+  const count = JSON.parse(localStorage.getItem("counters"));
+
   return (
     <div className="header">
       <div className="item">
         <ul>
           {headerItem.map((item) => (
             <li>
-              <Link className="linkDecoration" to={`/${item.name}`} >{item.name}</Link>
+              <Link className="linkDecoration" to={`/${item.name}`}>
+                {item.name}
+              </Link>
             </li>
           ))}
         </ul>
@@ -26,7 +30,7 @@ export default function Header() {
             className="imageLogo"
             src="https://cdn.shopify.com/s/files/1/1241/4530/files/logo_home_360x.png?v=1582201056"
           /> */}
-          <h3 >THUONG</h3>
+          <h3>THUONG</h3>
         </Link>
       </div>
       <div className="info">
@@ -41,9 +45,10 @@ export default function Header() {
             <BsFillPersonFill size={27} color={"royalblue"} />
           </Link>
         </div>
-        <div className="infoItem">
-          <Link to="/cart">
+        <div className="infoItem shopItem">
+          <Link className="text-decoration-none" to="/cart">
             <FiShoppingCart size={27} />
+            <div className="countItem">{count > 0 ? count : null}</div>
           </Link>
         </div>
         <div className="dropDown infoItem">

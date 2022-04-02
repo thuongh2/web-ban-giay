@@ -42,9 +42,24 @@
   .info {
     display: flex;
     margin: 5px;
+    
 
     .infoItem {
       margin: 10px;
+      align-self: center !important;
+
+    }
+
+    .shopItem {
+      padding-top: 25px;
+      .countItem{
+        position: relative;
+        bottom: 34px;
+        left: 20px;
+        text-decoration: none;
+        font-size: 18px; 
+        font-weight: bold;
+      }
     }
 
     .dropDown {

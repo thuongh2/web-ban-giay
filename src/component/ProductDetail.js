@@ -28,9 +28,8 @@ export default function ProductDetail() {
     };
 
     getProduct();
+  }, [productId]);
 
-    console.log(product);
-  }, []);
 
   return (
     <div className="productDetail">
@@ -39,18 +38,18 @@ export default function ProductDetail() {
       <div className="product">
         <div className="productCarousel">
           {/* slidebar */}
-          <ProductCarousel />
+          <ProductCarousel image={product.image}/>
         </div>
-        <div className="productDiscription">
+        <div className="productDiscription mb-5">
           <h3>{product.name}</h3>
-          <div>
-            <span>{product.price}</span>
+          <div className='h5 mb-3 mt-2'>
+            <span>{product.price} VNĐ</span>
           </div>
-          <span>{product.description}</span>
+          <span >{product.description}</span>
           <AddCard product={product} />
         </div>
       </div>
-      <ProductOffer />
+      <ProductOffer category={product.category} />
 
       <Footer />
     </div>

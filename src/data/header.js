@@ -15,12 +15,7 @@ export const headerItem = [
     id: 1,
     name: "Accessories",
     src: "#",
-  },
-  {
-    id: 1,
-    name: "Outlet",
-    src: "#",
-  },
+  }
 ];
 
 export const imageCarosel = [
