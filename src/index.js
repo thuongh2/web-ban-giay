@@ -11,22 +11,30 @@ import Register from "./component/Register";
 import AdminPro from "./component/AdminPro";
 import AddminProduct from "./component/AddminProduct";
 import ProductCategory from "./component/ProductCategory";
+// Redux
+import { Provider } from "react-redux";
+import store from "./redux/store";
+
+import NotFound from "./component/NotFound"
 
 ReactDOM.render(
-  <BrowserRouter>
-    <Routes>
-      <Route path="" element={<App />} />
-    
-      <Route path="" element={<ProductItem />}>
-        <Route path=":name" element={<ProductCategory />} />
-      </Route>
-      <Route path="login" element={<Login />} />
-      <Route path="register" element={<Register />} />
-      <Route path="cart" element={<YourCard />} />
-      <Route path="product/:productId" element={<ProductDetail />}></Route>
-      <Route path="admin" element={<AddminProduct />} />
-    </Routes>
-  </BrowserRouter>,
+  <Provider store={store}>
+    <BrowserRouter>
+      <Routes>
+      <Route path='*' element={<NotFound />} />
+        <Route path="" element={<App />} />
+
+        <Route path="" element={<ProductItem />}>
+          <Route path=":name" element={<ProductCategory />} />
+        </Route>
+        <Route path="login" element={<Login />} />
+        <Route path="register" element={<Register />} />
+        <Route path="cart" element={<YourCard />} />
+        <Route path="product/:productId" element={<ProductDetail />}></Route>
+        <Route path="admin" element={<AddminProduct />} />
+      </Routes>
+    </BrowserRouter>
+  </Provider>,
   document.getElementById("root")
 );
 

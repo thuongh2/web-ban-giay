@@ -6,10 +6,12 @@ import { TiDocumentText } from "react-icons/ti";
 import { headerItem } from "../data/header";
 import { Link, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
+import { useSelector } from "react-redux";
 
-export default function Header() {
+function Header(props) {
 
-  const count = JSON.parse(localStorage.getItem("counters"));
+  const count = useSelector(state=> state.shop.cart)
+  console.log(count.length)
 
   return (
     <div className="header">
@@ -48,7 +50,7 @@ export default function Header() {
         <div className="infoItem shopItem">
           <Link className="text-decoration-none" to="/cart">
             <FiShoppingCart size={27} />
-            <div className="countItem">{count > 0 ? count : null}</div>
+            <div className="countItem">{count.length > 0 ? count.length : null}</div>
           </Link>
         </div>
         <div className="dropDown infoItem">
@@ -65,3 +67,5 @@ export default function Header() {
     </div>
   );
 }
+
+export default (Header)

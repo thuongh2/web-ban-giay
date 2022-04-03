@@ -7,50 +7,48 @@ import ProductOffer from "./ProductOffer";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
+import { loadSelectedItem } from "../redux/Shopping/shopping-actions";
 
 export default function ProductDetail() {
-  const [product, setProduct] = useState([]);
+  // const [product, setProduct] = useState([]);
+  const product = useSelector((state) => state.shop.currentItem);
+  const dispatch = useDispatch();
 
   let { productId } = useParams();
-
   console.log(productId);
 
-  useEffect(() => {
-    const getProduct = async () => {
-      await axios
-        .get(`http://localhost:8080/product/${productId}`)
-        .then((res) => {
-          const persons = res.data;
-          console.log(persons);
-          setProduct(persons);
-        })
-        .catch((error) => console.log(error));
-    };
+  useEffect(async () => {
+    dispatch(loadSelectedItem(productId));
 
-    getProduct();
-  }, [productId]);
-
+    // getProduct();
+  }, []);
 
   return (
     <div className="productDetail">
       <Header />
       {/* product detail */}
       <div className="product">
-        <div className="productCarousel">
-          {/* slidebar */}
-          <ProductCarousel image={product.image}/>
-        </div>
-        <div className="productDiscription mb-5">
-          <h3>{product.name}</h3>
-          <div className='h5 mb-3 mt-2'>
-            <span>{product.price} VNĐ</span>
-          </div>
-          <span >{product.description}</span>
-          <AddCard product={product} />
-        </div>
+        {product != null && product !== undefined ? (
+          <>
+            <div className="productCarousel">
+              {/* slidebar */}
+              <ProductCarousel image={product.image} />
+            </div>
+            <div className="productDiscription mb-5">
+              <h3>{product.name}</h3>
+              <div className="h5 mb-3 mt-2">
+                <span>{product.price} VNĐ</span>
+              </div>
+              <span>{product.description}</span>
+              <AddCard product={product} />
+            </div>
+          </>
+        ) : (
+          "no"
+        )}
       </div>
-      <ProductOffer category={product.category} />
-
+        <ProductOffer category='men' />
       <Footer />
     </div>
   );

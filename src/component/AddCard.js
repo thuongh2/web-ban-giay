@@ -2,10 +2,16 @@ import "../styles/addCard.scss";
 import { Button, Card } from "react-bootstrap";
 import { useEffect, useState } from "react";
 import Select from "react-select";
+// Redux
+import {
+  addToCart
+} from "../redux/Shopping/shopping-actions";
+import { useDispatch } from "react-redux";
 
-export default function AddCard(props) {
+function AddCard(props) {
   const [p, setP] = useState([]);
   const [size, setSize] = useState("");
+  const dispatch = useDispatch()
   //bug
   useEffect(async () => {
     setSize(props.product.size);
@@ -13,24 +19,10 @@ export default function AddCard(props) {
 
   const handelSubmit = async (e) => {
     e.preventDefault();
-    setP(props.product);
-    let products = [];
-    let count = 0;
-    if (localStorage.getItem("products")) {
-      products = JSON.parse(localStorage.getItem("products"));
-      count = JSON.parse(localStorage.getItem("counters"));
-    }
-    // check unique product
-    if (products != null || products.length != 0) {
-      products.push(p);
-      count++;
-      localStorage.setItem("products", JSON.stringify(products));
-      localStorage.setItem("counters", JSON.stringify(count));
-    } else {
-      localStorage.setItem("products", JSON.stringify(p));
-      localStorage.setItem("counters", JSON.stringify(count));
-    }
+    dispatch(addToCart(props.product))
   };
+
+  console.log(props.product)
 
   const converSize = () => {
     if (size !== undefined) {
@@ -65,3 +57,7 @@ export default function AddCard(props) {
     </div>
   );
 }
+
+
+export default (AddCard);
+

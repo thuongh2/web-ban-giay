@@ -11,8 +11,9 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import AddminProduct from "./component/AddminProduct";
 import ProductList from "./component/ProductList";
 import './App.css'
+import { connect } from "react-redux";
 
-function App() {
+function App({ current }) {
   return (
     <div className="App">
       <Header />
@@ -25,4 +26,11 @@ function App() {
   );
 }
 
-export default App;
+const mapStateToProps = (state) => {
+  return {
+    current: state.shop.currentItem,
+  };
+};
+
+export default connect(mapStateToProps)(App);
+

@@ -1,0 +1,31 @@
+.productCard{
+    min-width: 400px;
+    min-height: 200px;
+    align-items: center;
+    .product{
+        display: flex;
+
+        .image{
+            img{
+                max-width: 150px;
+                max-height: 100px;
+            }
+        }
+
+        .infomation{
+            margin-left: 50px;
+        }
+
+    }
+
+    .amount{
+        display: flex;
+        justify-content: space-between;
+        
+        input{
+            width: 50px;
+            border-radius: 5px;
+        }
+        
+    }
+}
