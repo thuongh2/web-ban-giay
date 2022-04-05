@@ -1,28 +1,20 @@
 import "../styles/addCard.scss";
-import { Button, Card } from "react-bootstrap";
 import { useEffect, useState } from "react";
 import Select from "react-select";
 // Redux
-import {
-  addToCart
-} from "../redux/Shopping/shopping-actions";
-import { useDispatch } from "react-redux";
+import { addToCart } from "../redux/Shopping/shopping-actions";
+import { useDispatch, useSelector } from "react-redux";
+import { Form } from "react-bootstrap";
 
 function AddCard(props) {
-  const [p, setP] = useState([]);
-  const [size, setSize] = useState("");
-  const dispatch = useDispatch()
-  //bug
-  useEffect(async () => {
-    setSize(props.product.size);
-  }, [props.product]);
+  const [size, setSize] = useState(props.product.size);
+  const productCurrent = useSelector((state) => state.shop.currentItem);
+  const dispatch = useDispatch();
 
   const handelSubmit = async (e) => {
     e.preventDefault();
-    dispatch(addToCart(props.product))
+    dispatch(addToCart(productCurrent));
   };
-
-  console.log(props.product)
 
   const converSize = () => {
     if (size !== undefined) {
@@ -33,10 +25,13 @@ function AddCard(props) {
     }
   };
 
-  const handleChange = (selectedOption) => {
-    props.product.size = selectedOption.value;
+  const handleChange = (e) => {
+    console.log(e.target.value);
+    productCurrent.size = e.target.value;
   };
-  //bug
+
+  //if dont select
+
   return (
     <div className="inputSize">
       <form onSubmit={handelSubmit}>
@@ -44,11 +39,15 @@ function AddCard(props) {
           <label className="mt-2 mb-3">Size:</label>
         </div>
         <div className="select">
-          <Select
-            value={props.product.size}
+          <Form.Select
+            aria-label="Default select example"
             onChange={handleChange}
-            options={converSize()}
-          />
+          >
+            <option>Open this select menu</option>
+            {converSize().map((s) => (
+              <option value={s.value}>{s.label}</option>
+            ))}
+          </Form.Select>
         </div>
         <div className="btnSubmit">
           <input type="submit" class="btn btn-primary" value="ADD" />
@@ -58,6 +57,4 @@ function AddCard(props) {
   );
 }
 
-
-export default (AddCard);
-
+export default AddCard;

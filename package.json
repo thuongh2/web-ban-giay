@@ -21,6 +21,7 @@
     "react-icons": "^4.3.1",
     "react-input-number": "^5.0.19",
     "react-loading-icons": "^1.0.8",
+    "react-numeric-input": "^2.2.3",
     "react-redux": "^7.2.8",
     "react-responsive-carousel": "^3.2.23",
     "react-router": "^5.2.0",

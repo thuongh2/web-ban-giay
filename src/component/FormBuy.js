@@ -2,13 +2,24 @@ import { Form, Button } from "react-bootstrap";
 import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import "../styles/FormBuy.scss";
+import { useSelector } from "react-redux";
+import axios from "axios";
 
 export default function FormBuy() {
-  const [infomation, setInfomation] = useState({
-    id: uuidv4(),
-    orderDate: new Date().toISOString().slice(0, 19).replace("T", " "),
-    orderNum: "",
+  const cart = useSelector((state) => state.shop.cart);
+  const [orderId, setOrdersId] = useState("");
+  const [orderDetails, setOrderDetails] = useState({
+    orders: { id: "" },
+    product: { code: "" },
+    quantity: "",
+    price: "",
     amount: "",
+  });
+
+  const [orders, setOrders] = useState({
+    id: 1,
+    orderNum: 30,
+    amount: 0,
     customerName: "",
     customerAddress: "",
     customerEmail: "",
@@ -17,16 +28,53 @@ export default function FormBuy() {
 
   function handleChange(evt) {
     const value = evt.target.value;
-    setInfomation({
-      ...infomation,
+    setOrders({
+      ...orders,
       [evt.target.name]: value,
     });
-    console.log(infomation);
+    console.log(orders);
   }
 
-  function handleSubmit(evt) {
+  const handleSubmit = async (evt) => {
     evt.preventDefault();
-  }
+    await setOrders({ ...orders, amount: cart.length });
+
+    await axios.post("http://localhost:8080/save/order", orders).then(
+      (response) => {
+        setOrdersId(response.data.id);
+      },
+      (error) => {
+        console.log(error);
+      },
+      []
+    );
+    console.log(orderId)
+
+    await cart.map((cart) => {
+      setOrderDetails({
+        orders: { id: orderId },
+        product: { code: cart.code },
+        quantity: cart.qty,
+        price: cart.price,
+        amount: cart.price * cart.qty,
+      });
+
+      const postOrders = async () => {
+        await axios.post("http://localhost:8080/save/addtocard", orderDetails).then(
+          (response) => {
+            console.log(response);
+          },
+          (error) => {
+            console.log(error);
+          },
+          []
+        );
+      };
+
+      postOrders()
+    });
+  };
+  console.log(orderDetails);
 
   return (
     <div className="formBuy">
@@ -38,7 +86,7 @@ export default function FormBuy() {
             <Form.Control
               type="text"
               name="customerName"
-              value={infomation.customerName}
+              value={orders.customerName}
               onChange={handleChange}
             />
           </Form.Group>
@@ -48,7 +96,7 @@ export default function FormBuy() {
             <Form.Control
               type="text"
               name="customerPhone"
-              value={infomation.customerPhone}
+              value={orders.customerPhone}
               onChange={handleChange}
             />
           </Form.Group>
@@ -58,7 +106,7 @@ export default function FormBuy() {
           <Form.Control
             type="text"
             name="customerEmail"
-            value={infomation.customerEmail}
+            value={orders.customerEmail}
             onChange={handleChange}
           />
         </Form.Group>
@@ -67,7 +115,7 @@ export default function FormBuy() {
           <Form.Control
             as="textarea"
             name="customerAddress"
-            value={infomation.customerAddress}
+            value={orders.customerAddress}
             onChange={handleChange}
           />
         </Form.Group>

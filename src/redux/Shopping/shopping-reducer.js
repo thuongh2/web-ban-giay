@@ -1,7 +1,7 @@
 import * as actionTypes from "./shopping-types";
 
 const INITIAL_STATE = {
-  products: [],
+  product: [],
   cart: [],
   currentItem: null,
 };
@@ -10,31 +10,33 @@ const shopReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case actionTypes.ADD_TO_CART:
       //Great Item data from products array
-      const item = state.products.find(
+      const item = state.product.find(
         (product) => product.code === action.payload.code
       );
       // Check if Item is in cart already
-      const inCart = state.cart.find((item) =>
-        item.code === action.payload.code ? true : false
+      const inCart = state.cart.find((i) =>
+        i.code === action.payload.code ? true : false
       );
+
+      console.log(inCart);
 
       console.log(action.payload)
       return {
         ...state,
-        // cart: inCart
-        //   ? state.cart.map((item) =>
-        //       item.code === action.payload.code
-        //         ? { ...item, qty: item.qty + 1 }
-        //         : item
-        //     )
-        //   : [...state.cart, { ...item, qty: 1 }],
-        cart: [...state.cart, action.payload]
+        cart: inCart
+          ? state.cart.map((item) =>
+              item.code === action.payload.code
+                ? { ...item, qty: item.qty + 1 }
+                : item
+            )
+          : [...state.cart, { ...item, qty: 1 }]
+
        
       };
     case actionTypes.REMOVE_FROM_CART:
       return {
         ...state,
-        cart: state.cart.filter((item) => item.id !== action.payload.id),
+        cart: state.cart.filter((item) => item.code !== action.payload.id),
       };
     case actionTypes.ADJUST_ITEM_QTY:
       return {
