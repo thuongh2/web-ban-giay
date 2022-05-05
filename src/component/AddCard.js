@@ -44,9 +44,7 @@ function AddCard(props) {
             onChange={handleChange}
           >
             <option>Open this select menu</option>
-            {converSize().map((s) => (
-              <option value={s.value}>{s.label}</option>
-            ))}
+         
           </Form.Select>
         </div>
         <div className="btnSubmit">

@@ -4,8 +4,7 @@ import { BsFillPersonFill } from "react-icons/bs";
 import { FiShoppingCart } from "react-icons/fi";
 import { TiDocumentText } from "react-icons/ti";
 import { headerItem } from "../data/header";
-import { Link, useNavigate } from "react-router-dom";
-import { useEffect } from "react";
+import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 function Header(props) {
@@ -50,7 +49,7 @@ function Header(props) {
         <div className="infoItem shopItem">
           <Link className="text-decoration-none" to="/cart">
             <FiShoppingCart size={27} />
-            <div className="countItem">{count.length > 0 ? count.length : null}</div>
+            <div className={`countItem`} style={count.length > 0 ?{marginTop: '-25px'}: {}}>{count.length > 0 ? count.length : null}</div>
           </Link>
         </div>
         <div className="dropDown infoItem">

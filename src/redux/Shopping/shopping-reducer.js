@@ -38,6 +38,12 @@ const shopReducer = (state = INITIAL_STATE, action) => {
         ...state,
         cart: state.cart.filter((item) => item.code !== action.payload.id),
       };
+
+    case actionTypes.REMOVE_ALL_PRODUCT:
+      return {
+        ...state,
+        cart: []
+      }
     case actionTypes.ADJUST_ITEM_QTY:
       return {
         ...state,

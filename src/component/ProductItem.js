@@ -1,6 +1,6 @@
-import Header from "./Header";
+import Header from "../layouts/Header";
 import SliderBar from "./SlideBar";
-import Footer from "./Footer";
+import Footer from "../layouts/Footer";
 import { Link, Outlet, useNavigate } from "react-router-dom";
 import {  useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
@@ -13,7 +13,6 @@ function ProductItem() {
     <div className="App">
       <Header />
       <SliderBar />
-      <Outlet/>
       <Footer />
     </div>
   );

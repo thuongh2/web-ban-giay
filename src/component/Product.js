@@ -1,13 +1,12 @@
 import "../styles/product.scss";
 import CardItem from "./Card";
 import { Link } from "react-router-dom";
-import { useState, useEffect } from "react";
-import axios from "axios";
 import LoadingIcons from "react-loading-icons";
 import { connect, useDispatch, useSelector } from "react-redux";
 import {
   getAllProductByCategoryId, getAllProduct
 } from "../redux/Shopping/shopping-actions";
+import { useEffect } from "react";
 
 function Product(props) {
 
@@ -27,11 +26,11 @@ function Product(props) {
       <>
         <Link
           className=" text-secondary text-decoration-none"
-          to={`/product/${product.code}`}
-          key={product.code}
+          to={`/product/${product.id}`}
+          key={product.id}
         >
           <CardItem
-            key={product.code}
+            key={product.id}
             className="productCard"
             image={product.image}
             name={product.name}

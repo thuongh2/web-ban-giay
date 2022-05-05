@@ -1,24 +1,18 @@
 import { Form, Button } from "react-bootstrap";
 import { useState } from "react";
-import { v4 as uuidv4 } from "uuid";
 import "../styles/FormBuy.scss";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
+import { removeAllFromCart } from "../redux/Shopping/shopping-actions";
 
 export default function FormBuy() {
   const cart = useSelector((state) => state.shop.cart);
-  const [orderId, setOrdersId] = useState("");
-  const [orderDetails, setOrderDetails] = useState({
-    orders: { id: "" },
-    product: { code: "" },
-    quantity: "",
-    price: "",
-    amount: "",
-  });
-
+  const [isReady, setIsReady] = useState(false);
+  const dispatch = useDispatch();
+  var error = "";
   const [orders, setOrders] = useState({
     id: 1,
-    orderNum: 30,
+    orderNum: Math.floor(Math.random() * 100),
     amount: 0,
     customerName: "",
     customerAddress: "",
@@ -32,8 +26,36 @@ export default function FormBuy() {
       ...orders,
       [evt.target.name]: value,
     });
-    console.log(orders);
   }
+
+  const handleOrder = async (orderId) => {
+    await cart.map((c) => {
+      var orderDetails = new FormData();
+      orderDetails.append("orders", orderId);
+      orderDetails.append("product", c.code);
+      orderDetails.append("quantity", c.qty);
+      orderDetails.append("price", c.price);
+      orderDetails.append("amount", c.price * c.qty);
+
+      const postOrders = async () => {
+        await axios
+          .post("http://localhost:8080/save/addtocard", orderDetails)
+          .then(
+            (response) => {},
+            (error) => {
+              setIsReady(true);
+              console.log(error);
+            },
+            []
+          );
+      };
+      postOrders();
+    });
+  };
+
+  const handelSucces = async () => {
+    dispatch(removeAllFromCart());
+  };
 
   const handleSubmit = async (evt) => {
     evt.preventDefault();
@@ -41,40 +63,21 @@ export default function FormBuy() {
 
     await axios.post("http://localhost:8080/save/order", orders).then(
       (response) => {
-        setOrdersId(response.data.id);
+        handleOrder(response.data.id);
       },
       (error) => {
+        setIsReady(true);
         console.log(error);
       },
       []
     );
-    console.log(orderId)
-
-    await cart.map((cart) => {
-      setOrderDetails({
-        orders: { id: orderId },
-        product: { code: cart.code },
-        quantity: cart.qty,
-        price: cart.price,
-        amount: cart.price * cart.qty,
-      });
-
-      const postOrders = async () => {
-        await axios.post("http://localhost:8080/save/addtocard", orderDetails).then(
-          (response) => {
-            console.log(response);
-          },
-          (error) => {
-            console.log(error);
-          },
-          []
-        );
-      };
-
-      postOrders()
-    });
+    console.log(isReady);
+    if (isReady == false) {
+      handelSucces();
+    } else {
+      alert("Đặt hàng không thành công");
+    }
   };
-  console.log(orderDetails);
 
   return (
     <div className="formBuy">

@@ -1,7 +1,7 @@
 import "../styles/productDetail.scss";
 import AddCard from "./AddCard";
-import Footer from "./Footer";
-import Header from "./Header";
+import Footer from "../layouts/Footer";
+import Header from "../layouts/Header";
 import ProductCarousel from "./ProductCarousel";
 import ProductOffer from "./ProductOffer";
 import { useState, useEffect } from "react";
@@ -26,7 +26,6 @@ export default function ProductDetail() {
 
   return (
     <div className="productDetail">
-      <Header />
       {/* product detail */}
       <div className="product">
         {product != null && product !== undefined ? (
@@ -49,7 +48,6 @@ export default function ProductDetail() {
         )}
       </div>
         <ProductOffer category='men' />
-      <Footer />
     </div>
   );
 }

@@ -18,6 +18,13 @@ export const removeFromCart = (itemID) => {
   };
 };
 
+export const removeAllFromCart = () => {
+  return {
+    type: actionTypes.REMOVE_ALL_PRODUCT,
+    payload: []
+  }
+}
+
 export const adjustItemQty = (itemID, qty) => {
   return {
     type: actionTypes.ADJUST_ITEM_QTY,
@@ -37,7 +44,7 @@ export const loadCurrentItem = (item) => {
 
 export const loadSelectedItem =  (id) => async (dispatch) =>{
   
-  const response = await axios.get(`http://localhost:8080/product/${id}`);
+  const response = await axios.get(`http://127.0.0.1:8080/api/product/${id}`);
 
   console.log(response.data)
 
@@ -46,7 +53,7 @@ export const loadSelectedItem =  (id) => async (dispatch) =>{
 };
 export const getAllProduct =  () => async (dispatch) =>{
   
-    const response = await axios.get("http://localhost:8080/products");
+    const response = await axios.get("http://127.0.0.1:8080/api/products-d");
     console.log(response.data)
   
     dispatch({type: actionTypes.GET_ALL_PRODUCT, payload: response.data})  

@@ -1,5 +1,5 @@
-import Header from "./Header";
-import Footer from "./Footer";
+import Header from "../layouts/Header";
+import Footer from "../layouts/Footer";
 import { Button, Form } from "react-bootstrap";
 import { useEffect, useMemo, useState } from "react";
 import axios from "axios";
@@ -18,6 +18,7 @@ function AddminProduct() {
     name: "",
     price: "",
     description: "",
+    size: ""
   });
   const [tasks, setTasks] = useState([]);
   const [data, setData] = useState([]);
@@ -70,6 +71,7 @@ function AddminProduct() {
     formData.append(`code`, product.code);
     formData.append(`name`, product.name);
     formData.append(`price`, product.price);
+    formData.append(`size`, product.size);
     formData.append(`description`, product.description);
     formData.append(`categoryId`, cat.id);
 
@@ -189,6 +191,15 @@ function AddminProduct() {
             type="text"
             name="price"
             value={product.price}
+            onChange={handleChange}
+          />
+        </Form.Group>
+        <Form.Group className="mb-3" controlId="formBasicEmail">
+          <Form.Label>Size</Form.Label>
+          <Form.Control
+            type="text"
+            name="size"
+            value={product.size}
             onChange={handleChange}
           />
         </Form.Group>
