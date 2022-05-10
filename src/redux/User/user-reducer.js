@@ -11,23 +11,23 @@ const authReducer = (state = initialState, action) => {
   switch (action.type) {
     case "SIGN_IN":
   
-      const user = jwtDecode(action.token); 
+      const user = jwtDecode(action.payload.token); 
+
       return {
-        ...initialState,
-        token: action.token,
+        ...state,
+        token: action.payload.token,
         name: user.name,
         email: user.email,
         _id: user._id,
       };
-    // case "SIGN_OUT":
-    //   localStorage.removeItem("token");
-    //   return {
-    //     token: null,
-    //     name: null,
-    //     email: null,
-    //     _id: null,
-    //   };
+    // 
+    case "REGISTER":
+      if(action.payload.status === 201)
+        return true;
+      return false;
+
     default:
+      console.log("no")
       return state;
   }
 };

@@ -2,16 +2,20 @@ import "../styles/ProductCard.scss";
 import { MdDeleteForever } from 'react-icons/md'
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { removeFromCart } from "../redux/Shopping/shopping-actions";
+import { removeFromCart } from "../redux/Shopping/shoppingActions";
 
 function ProductCard(props) {
   const [product, setProduct] = useState(props.product)
   const dispatch = useDispatch()
 
-  console.log(props.product.qty)
-
   const handleDelete = (event, productCode)=>{
     dispatch(removeFromCart(productCode))
+  }
+
+  var image = null;
+
+  if(product.image.length > 0) {
+    image = product.image[0].thumbnail;
   }
 
   return (
@@ -19,7 +23,7 @@ function ProductCard(props) {
       {/* product */}
       <div className="product">
         <div className="image">
-          <img src={product.image}></img>
+          <img src={image}></img>
         </div>
         <div className="infomation">
           <div className="name">{product.name}</div>

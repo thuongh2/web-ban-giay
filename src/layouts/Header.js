@@ -8,9 +8,8 @@ import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 function Header(props) {
-
-  const count = useSelector(state=> state.shop.cart)
-  console.log(count.length)
+  const count = useSelector((state) => state.shop.cart);
+  console.log(count.length);
 
   return (
     <div className="header">
@@ -36,10 +35,12 @@ function Header(props) {
       </div>
       <div className="info">
         <div className="infoItem">
-          <div>
-            <BiSearchAlt2 size={27} />
-            <span className="searchTitle">Search</span>
-          </div>
+          <Link to="search" className="text-decoration-none">
+            <div>
+              <BiSearchAlt2 size={27} />
+              <span className="searchTitle">Search</span>
+            </div>
+          </Link>
         </div>
         <div className="infoItem">
           <Link to="/login">
@@ -49,7 +50,12 @@ function Header(props) {
         <div className="infoItem shopItem">
           <Link className="text-decoration-none" to="/cart">
             <FiShoppingCart size={27} />
-            <div className={`countItem`} style={count.length > 0 ?{marginTop: '-25px'}: {}}>{count.length > 0 ? count.length : null}</div>
+            <div
+              className={`countItem`}
+              style={count.length > 0 ? { marginTop: "-25px" } : {}}
+            >
+              {count.length > 0 ? count.length : null}
+            </div>
           </Link>
         </div>
         <div className="dropDown infoItem">
@@ -67,4 +73,4 @@ function Header(props) {
   );
 }
 
-export default (Header)
+export default Header;

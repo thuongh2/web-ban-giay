@@ -11,11 +11,11 @@ const shopReducer = (state = INITIAL_STATE, action) => {
     case actionTypes.ADD_TO_CART:
       //Great Item data from products array
       const item = state.product.find(
-        (product) => product.code === action.payload.code
+        (product) => product.id === action.payload.id
       );
       // Check if Item is in cart already
       const inCart = state.cart.find((i) =>
-        i.code === action.payload.code ? true : false
+        i.id === action.payload.id ? true : false
       );
 
       console.log(inCart);
@@ -25,7 +25,7 @@ const shopReducer = (state = INITIAL_STATE, action) => {
         ...state,
         cart: inCart
           ? state.cart.map((item) =>
-              item.code === action.payload.code
+              item.id === action.payload.id
                 ? { ...item, qty: item.qty + 1 }
                 : item
             )

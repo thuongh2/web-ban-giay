@@ -1,12 +1,17 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Form, Button } from "react-bootstrap";
-import { useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, useHistory } from "react-router-dom";
 import { signUp } from "../redux/User/user-actions";
 import "../styles/loginForm.scss";
 
 function LoginForm() {
   const [user, setUser] = useState({ username: "" , password: "" });
+
+  const token = useSelector((state) => state.user);
+
+  let history = useHistory();
+
 
   const dispatch = useDispatch();
 
@@ -18,11 +23,18 @@ function LoginForm() {
     });
   }
 
-  console.log(user)
-
   const handelSubmit = async(e)=>{
     e.preventDefault();
-    dispatch(signUp(user))
+
+    await dispatch(signUp(user))
+
+    console.log("ok1")
+
+    if(token != null || token != undefined) {
+    
+      history.push("/")
+    }
+
   }
 
   return (

@@ -4,21 +4,21 @@ import { Link } from "react-router-dom";
 import LoadingIcons from "react-loading-icons";
 import { connect, useDispatch, useSelector } from "react-redux";
 import {
-  getAllProductByCategoryId, getAllProduct
-} from "../redux/Shopping/shopping-actions";
+  getAllProductByCategoryId,
+  getAllProduct,
+} from "../redux/Shopping/shoppingActions";
 import { useEffect } from "react";
+import SliderBar from "./SlideBar";
 
 function Product(props) {
+  const products = useSelector((state) => state.shop.product);
+  const dispatch = useDispatch();
 
-  const products = useSelector((state) => state.shop.product)
-  const dispatch = useDispatch()
-
-  useEffect( async ()=>{
+  useEffect(async () => {
     // if(props.category.name && props.category.name != "")
     //   dispatch(getAllProductByCategoryId(props.category.name))
-    dispatch(getAllProduct())
-  }, [])
-
+    dispatch(getAllProduct());
+  }, []);
 
   let productsR = <LoadingIcons.Bars stroke="#000" strokeOpacity={0.125} />;
   if (products !== undefined && products !== null) {
@@ -37,22 +37,21 @@ function Product(props) {
             price={product.price}
           />
         </Link>
- 
       </>
     ));
   }
 
   return (
-    <div className="container">
-      <div className="headerProduct">
-        {/* <h2>{props.category.name}</h2> */}
+    <>
+      <SliderBar />
+      <div className="container">
+        <div className="headerProduct">
+          {/* <h2>{props.category.name}</h2> */}
+        </div>
+        <div className="products">{productsR}</div>
       </div>
-      <div className="products">{productsR}</div>
-    </div>
+    </>
   );
 }
 
-
-
-
-export default (Product);
+export default Product;

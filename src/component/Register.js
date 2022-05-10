@@ -5,9 +5,7 @@ import RegisterForm from "./RegisterForm";
 function Register() {
   return (
     <div className="login">
-      <Header />
       <RegisterForm />
-      <Footer />
     </div>
   );
 }

@@ -11,6 +11,7 @@ import Product from "../component/Product";
 import Header from "./Header";
 import Footer from "./Footer";
 import AdminBusiness from "../admin/AdminBusiness";
+import Search from "../component/Search";
 
 function Body() {
   return (
@@ -20,7 +21,9 @@ function Body() {
         <Switch>
           <Route exact path="/" component={Product} />
           <Route exact path="/login" component={Login} />
-          {/* <Route exact path="/admin" component={AdminBusiness} /> */}
+          <Route exact path="/register" component={Register} />
+          <Route exact path="/cart" component={YourCard} />
+          <Route exact path="/search" component={Search} />
           <Route exact path="/product/:productId" component={ProductDetail} />
         </Switch>
         <Footer />

@@ -5,11 +5,11 @@ export const signUp = (user) => {
     axios
       .post(`http://localhost:8080/api/authenticate`, user)
       .then((token) => {
-        localStorage.setItem("token", token.data);
+        localStorage.setItem("token", token.data.token);
 
         dispatch({
-          type: "SIGN_UP",
-          token: token.data,
+          type: "SIGN_IN",
+          payload: token.data,
         });
       })
       .catch((error) => {
@@ -18,25 +18,21 @@ export const signUp = (user) => {
   };
 };
 
-// export const signIn = (email, password) => {
-//   return (dispatch) => {
-//     axios
-//       .post(`${url}/signin`, { email, password })
-//       .then((token) => {
-//         localStorage.setItem("token", token.data);
-
-//         dispatch({
-//           type: "SIGN_IN",
-//           token: token.data,
-//         });
-//       })
-//       .catch((error) => {
-//         console.log(error.response);
-
-        
-//       });
-//   };
-// };
+export const Register = (user) => {
+  return (dispatch) => {
+    axios
+      .post(`http://localhost:8080/api/signup`, user)
+      .then((data) => {
+        dispatch({
+          type: "REGISTER",
+          payload: data,
+        });
+      })
+      .catch((error) => {
+        console.log(error.response);
+      });
+  };
+};
 
 // export const signOut = () => {
 //   return (dispatch) => {

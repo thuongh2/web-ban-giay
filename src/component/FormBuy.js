@@ -3,7 +3,7 @@ import { useState } from "react";
 import "../styles/FormBuy.scss";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
-import { removeAllFromCart } from "../redux/Shopping/shopping-actions";
+import { removeAllFromCart } from "../redux/Shopping/shoppingActions";
 
 export default function FormBuy() {
   const cart = useSelector((state) => state.shop.cart);

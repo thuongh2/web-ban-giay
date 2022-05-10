@@ -1,5 +1,5 @@
 import axios from "axios";
-import * as actionTypes from "./shopping-types";
+import * as actionTypes from "./shoppingTypes";
 import fake  from "../../api/fake";
 
 export const addToCart = (item) => {
@@ -35,6 +35,23 @@ export const adjustItemQty = (itemID, qty) => {
   };
 };
 
+// find product in redux by category
+export const loadProductFromCategory = (category) =>{
+  return {
+    type: actionTypes.LOAD_BY_CATEGORY,
+    payload: category
+  }
+}
+
+// find product by name
+export const loadProductByName = (name) =>{
+  return {
+    type: actionTypes.LOAD_BY_CATEGORY,
+    payload: category
+  }
+}
+
+
 export const loadCurrentItem = (item) => {
   return {
     type: actionTypes.LOAD_CURRENT_ITEM,
@@ -53,7 +70,7 @@ export const loadSelectedItem =  (id) => async (dispatch) =>{
 };
 export const getAllProduct =  () => async (dispatch) =>{
   
-    const response = await axios.get("http://127.0.0.1:8080/api/products-d");
+    const response = await axios.get("http://127.0.0.1:8080/api/products");
     console.log(response.data)
   
     dispatch({type: actionTypes.GET_ALL_PRODUCT, payload: response.data})  

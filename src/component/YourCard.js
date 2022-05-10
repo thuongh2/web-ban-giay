@@ -67,14 +67,12 @@ function YourCard() {
 
   return (
     <div>
-      <Header />
       <div className="container youCard">
         <div className="header">
           <h2>Your Card</h2>
         </div>
         {nonProduct}
       </div>
-      <Footer />
     </div>
   );
 }

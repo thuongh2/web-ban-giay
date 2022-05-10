@@ -5,19 +5,17 @@ import "../styles/productCarousel.scss";
 
 export default function ProductCarousel(props) {
   let carousel = <span>"no"</span>;
-  if (props.image !== undefined ) {
+
+  if (props.image.length > 0) {
     carousel = (
       <Carousel className="carouselProduct">
-        <div>
-          <img src={props.image} alt="no" />
-        </div>
-        <div>
-          <img src={props.image} alt="no" />
-        </div>
-        <div>
-          <img src={props.image} alt="no" />
-        </div>
-        
+        {props.image.map((img) => {
+          return (
+            <div>
+              <img src={img.thumbnail != null ? img.thumbnail : ''}></img>
+            </div>
+          );
+        })}
       </Carousel>
     );
   }

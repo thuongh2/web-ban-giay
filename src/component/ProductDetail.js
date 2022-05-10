@@ -8,7 +8,7 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
-import { loadSelectedItem } from "../redux/Shopping/shopping-actions";
+import { loadSelectedItem } from "../redux/Shopping/shoppingActions";
 
 export default function ProductDetail() {
   // const [product, setProduct] = useState([]);
