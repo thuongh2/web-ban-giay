@@ -6,18 +6,21 @@ import axios from "axios";
 import { removeAllFromCart } from "../redux/Shopping/shoppingActions";
 
 export default function FormBuy() {
-  const cart = useSelector((state) => state.shop.cart);
+  const carts = useSelector((state) => state.shop.cart);
   const [isReady, setIsReady] = useState(false);
   const dispatch = useDispatch();
-  var error = "";
   const [orders, setOrders] = useState({
-    id: 1,
-    orderNum: Math.floor(Math.random() * 100),
-    amount: 0,
     customerName: "",
     customerAddress: "",
     customerEmail: "",
     customerPhone: "",
+  });
+
+  const [orderDetails, setOrderDetails] = useState({
+    orderId: "",
+    productId: "",
+    size: "",
+    quantity: "",
   });
 
   function handleChange(evt) {
@@ -29,28 +32,41 @@ export default function FormBuy() {
   }
 
   const handleOrder = async (orderId) => {
-    await cart.map((c) => {
-      var orderDetails = new FormData();
-      orderDetails.append("orders", orderId);
-      orderDetails.append("product", c.code);
-      orderDetails.append("quantity", c.qty);
-      orderDetails.append("price", c.price);
-      orderDetails.append("amount", c.price * c.qty);
 
-      const postOrders = async () => {
-        await axios
-          .post("http://localhost:8080/save/addtocard", orderDetails)
-          .then(
-            (response) => {},
-            (error) => {
-              setIsReady(true);
-              console.log(error);
-            },
-            []
-          );
-      };
-      postOrders();
+    const postOrders = async (orderDetails) => {
+      await axios
+        .post("http://localhost:8080/api/order/detail", orderDetails)
+        .then(
+          (response) => {
+            setIsReady(false)
+          },
+          (error) => {
+            setIsReady(true);
+            console.log(error);
+          },
+          []
+        );
+    };
+
+    carts.map(async (cart) => {
+      await setOrderDetails({
+        orderId: orderId,
+        productId: cart.id,
+        size: cart.sizes,
+        quantity: cart.qty,
+      });
+
+      //check
+      await console.log(orderDetails);
+
+      await postOrders(orderDetails);
     });
+
+    // if (isReady == false) {
+    //   handelSucces();
+    // } else {
+    //   alert("Đặt hàng không thành công");
+    // }
   };
 
   const handelSucces = async () => {
@@ -59,9 +75,8 @@ export default function FormBuy() {
 
   const handleSubmit = async (evt) => {
     evt.preventDefault();
-    await setOrders({ ...orders, amount: cart.length });
 
-    await axios.post("http://localhost:8080/save/order", orders).then(
+    await axios.post("http://localhost:8080/api/save/order", orders).then(
       (response) => {
         handleOrder(response.data.id);
       },
@@ -71,12 +86,8 @@ export default function FormBuy() {
       },
       []
     );
-    console.log(isReady);
-    if (isReady == false) {
-      handelSucces();
-    } else {
-      alert("Đặt hàng không thành công");
-    }
+
+
   };
 
   return (
@@ -122,7 +133,6 @@ export default function FormBuy() {
             onChange={handleChange}
           />
         </Form.Group>
-
         <Button variant="primary" className="w-100" type="submit">
           CONFIRM
         </Button>

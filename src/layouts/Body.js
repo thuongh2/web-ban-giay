@@ -19,7 +19,8 @@ function Body() {
       <BrowserRouter>
         <Header />
         <Switch>
-          <Route exact path="/" component={Product} />
+          <Route index exact path="/" component={Product} />
+          <Route exact path="/category/:name" component={Product} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/register" component={Register} />
           <Route exact path="/cart" component={YourCard} />

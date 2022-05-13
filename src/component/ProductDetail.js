@@ -47,7 +47,7 @@ export default function ProductDetail() {
           "no"
         )}
       </div>
-        <ProductOffer category='men' />
+        <ProductOffer category={product.category} />
     </div>
   );
 }

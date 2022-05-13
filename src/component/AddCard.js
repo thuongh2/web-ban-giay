@@ -10,25 +10,28 @@ import { useHistory } from "react-router-dom";
 function AddCard(props) {
   const [size, setSize] = useState(props.product.size);
   const productCurrent = useSelector((state) => state.shop.currentItem);
+  const [product, setProduct] = useState({...productCurrent, sizes: null});
   const dispatch = useDispatch();
   const [error, setError] = useState("");
   let history = useHistory();
 
+  console.log(product);
+
   const handelSubmit = async (e) => {
     e.preventDefault();
 
-    if (productCurrent.size == null) {
+    if (product.sizes == null) {
       console.error("day")
       setError("Vui long chon size");
     } else {
-      await dispatch(addToCart(productCurrent));
+      await dispatch(addToCart(product));
       history.push("/cart");
     }
   };
 
   const handleChange = (e) => {
     console.log(e.target.value);
-    productCurrent.size = e.target.value;
+    setProduct({...product, sizes: e.target.value}) ;
   };
 
   //if dont select
@@ -42,7 +45,7 @@ function AddCard(props) {
         <div className="select">
           <select value={size} onChange={handleChange}>
             {productCurrent.sizes.map((option) => (
-              <option value={option.id}>{option.size}</option>
+              <option value={option.size}>{option.size}</option>
             ))}
           </select>
         </div>

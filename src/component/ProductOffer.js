@@ -3,37 +3,39 @@ import { products } from "../data/header";
 import CardItem from "./Card";
 import { ScrollMenu } from "react-horizontal-scrolling-menu";
 import "../styles/hideScrollbar.css";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
+import { loadSelectedItem } from "../redux/Shopping/shoppingActions";
 
 export default function ProductOffer(props) {
-  const [products, setProducts] = useState([]);
-  useEffect(() => {
-    const getProducts = async () => {
-      await axios
-        .get(`http://localhost:8080/product/category/${props.category.name.toLowerCase()}`)
-        .then((res) => {
-          setProducts(res.data);
-          console.log(products);
-        })
-        .catch((error) => console.log(error));
-      };
-    getProducts();
-  }, [props]);
+  const products = useSelector((state) => state.shop.product);
 
-  console.log(products);
-  
+  const dispatch = useDispatch();
+
+  let { productId } = useParams();
+
+  //load page when change product
+  useEffect(async () => {
+    dispatch(loadSelectedItem(productId));
+  }, [productId]);
+
+
+  const productCategory = products.filter(
+      (product) => product.category.id === props.category.id)
+
+
   return (
     <div className="productOffer container">
       <h3>Similar Product</h3>
       <div>
         <ScrollMenu>
-          {products.map((product) => (
+        {productCategory.map((product) => (
             <Link
               className=" text-secondary text-decoration-none"
-              to={`/product/${product.code}`}
-              key={product.code}
+              to={`/product/${product.id}`}
+              key={product.id}
             >
               <CardItem
                 className="productCard"

@@ -3,10 +3,15 @@ import { Button, Card } from "react-bootstrap";
 
 export default function CardItem(props) {
 
-  var image = null;
+  function getRndInteger(min, max) {
+    return Math.floor(Math.random() * (max - min)) + min;
+  }
 
-  if(props.image.length > 0) {
-    image = props.image[0].thumbnail;
+  var image = `https://picsum.photos/300/${getRndInteger(300, 400)}`;
+
+
+  if(props.image) {
+    image = props.image[0] !== undefined ? props.image[0].thumbnail : image;
   }
 
   return (

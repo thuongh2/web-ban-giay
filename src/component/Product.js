@@ -1,6 +1,6 @@
 import "../styles/product.scss";
 import CardItem from "./Card";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import LoadingIcons from "react-loading-icons";
 import { connect, useDispatch, useSelector } from "react-redux";
 import {
@@ -12,33 +12,56 @@ import SliderBar from "./SlideBar";
 
 function Product(props) {
   const products = useSelector((state) => state.shop.product);
+  const categories = useSelector((state) => state.shop.category);
   const dispatch = useDispatch();
+  const categoryName = useParams();
 
   useEffect(async () => {
-    // if(props.category.name && props.category.name != "")
-    //   dispatch(getAllProductByCategoryId(props.category.name))
-    dispatch(getAllProduct());
-  }, []);
+    // Get all products in reducer
+    await dispatch(getAllProduct());
+  }, [categoryName]);
 
-  let productsR = <LoadingIcons.Bars stroke="#000" strokeOpacity={0.125} />;
-  if (products !== undefined && products !== null) {
-    productsR = products.map((product) => (
-      <>
-        <Link
-          className=" text-secondary text-decoration-none"
-          to={`/product/${product.id}`}
-          key={product.id}
-        >
-          <CardItem
-            key={product.id}
-            className="productCard"
-            image={product.image}
-            name={product.name}
-            price={product.price}
-          />
-        </Link>
-      </>
-    ));
+  console.log(categoryName);
+
+  //list products by category
+  const listProducts = (category) => {
+    // filter products by category
+
+    const productCategory = products.filter(
+      (product) => product.category.name === category.name
+    );
+
+    return (
+      <div>
+        <h1>{category.name}</h1>
+        <div className="products">
+          {productCategory.map((product) => (
+            <Link
+              className=" text-secondary text-decoration-none"
+              to={`/product/${product.id}`}
+              key={product.id}
+            >
+              <CardItem
+                key={product.id}
+                className="productCard"
+                image={product.image}
+                name={product.name}
+                price={product.price}
+              />
+            </Link>
+          ))}
+        </div>
+      </div>
+    );
+  };
+
+  // check path when to render
+  function productMain() {
+    if (categoryName.name !== undefined) {
+      return listProducts(categoryName);
+    } else {
+      return categories.map((category) => listProducts(category));
+    }
   }
 
   return (
@@ -48,7 +71,7 @@ function Product(props) {
         <div className="headerProduct">
           {/* <h2>{props.category.name}</h2> */}
         </div>
-        <div className="products">{productsR}</div>
+        {productMain()}
       </div>
     </>
   );

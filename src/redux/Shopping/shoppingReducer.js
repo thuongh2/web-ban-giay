@@ -1,8 +1,9 @@
-import * as actionTypes from "./shopping-types";
+import * as actionTypes from "./shoppingTypes";
 
 const INITIAL_STATE = {
   product: [],
   cart: [],
+  category: [],
   currentItem: null,
 };
 
@@ -18,20 +19,15 @@ const shopReducer = (state = INITIAL_STATE, action) => {
         i.id === action.payload.id ? true : false
       );
 
-      console.log(inCart);
-
-      console.log(action.payload)
       return {
         ...state,
         cart: inCart
           ? state.cart.map((item) =>
               item.id === action.payload.id
-                ? { ...item, qty: item.qty + 1 }
-                : item
+                ? { ...action.payload, qty: item.qty + 1 }
+                : action.payload
             )
-          : [...state.cart, { ...item, qty: 1 }]
-
-       
+          : [...state.cart, { ...action.payload, qty: 1 }],
       };
     case actionTypes.REMOVE_FROM_CART:
       return {
@@ -42,8 +38,8 @@ const shopReducer = (state = INITIAL_STATE, action) => {
     case actionTypes.REMOVE_ALL_PRODUCT:
       return {
         ...state,
-        cart: []
-      }
+        cart: [],
+      };
     case actionTypes.ADJUST_ITEM_QTY:
       return {
         ...state,
@@ -74,7 +70,11 @@ const shopReducer = (state = INITIAL_STATE, action) => {
         ...state,
         product: action.payload,
       };
-
+    case actionTypes.GET_ALL_CATEGORY:
+      return {
+        ...state,
+        category: action.payload,
+      }
     default:
       return state;
   }

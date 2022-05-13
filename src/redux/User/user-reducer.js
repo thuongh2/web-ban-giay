@@ -4,7 +4,6 @@ const initialState = {
   token: localStorage.getItem("token"),
   name: null,
   email: null,
-  _id: null,
 };
 
 const authReducer = (state = initialState, action) => {

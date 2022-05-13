@@ -5,19 +5,29 @@ import { FiShoppingCart } from "react-icons/fi";
 import { TiDocumentText } from "react-icons/ti";
 import { headerItem } from "../data/header";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { getAllCategory } from "../redux/Shopping/shoppingActions";
 
 function Header(props) {
   const count = useSelector((state) => state.shop.cart);
-  console.log(count.length);
+  const category = useSelector((state) => state.shop.category);
+
+  const dispatch = useDispatch();
+
+  useEffect(async () => {
+    dispatch(getAllCategory());
+  }, []);
+
+  console.log(category);
 
   return (
     <div className="header">
       <div className="item">
         <ul>
-          {headerItem.map((item) => (
+          {category.map((item) => (
             <li>
-              <Link className="linkDecoration" to={`/${item.name}`}>
+              <Link className="linkDecoration" to={`/category/${item.name}`}>
                 {item.name}
               </Link>
             </li>
