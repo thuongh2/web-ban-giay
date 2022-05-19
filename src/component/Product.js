@@ -33,7 +33,7 @@ function Product(props) {
 
     return (
       <div>
-        <h1>{category.name}</h1>
+        <h1 className="category">{category.name}</h1>
         <div className="products">
           {productCategory.map((product) => (
             <Link
@@ -42,6 +42,7 @@ function Product(props) {
               key={product.id}
             >
               <CardItem
+                type="big"
                 key={product.id}
                 className="productCard"
                 image={product.image}
@@ -67,12 +68,7 @@ function Product(props) {
   return (
     <>
       <SliderBar />
-      <div className="container">
-        <div className="headerProduct">
-          {/* <h2>{props.category.name}</h2> */}
-        </div>
-        {productMain()}
-      </div>
+      <div className="container">{productMain()}</div>
     </>
   );
 }

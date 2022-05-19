@@ -1,7 +1,7 @@
+import axios from "axios";
 import { useState } from "react";
 import { Form, Button } from "react-bootstrap";
-import { useDispatch } from "react-redux";
-import { Register } from "../redux/User/user-actions";
+import { useHistory } from "react-router";
 import "../styles/registerForm.scss";
 
 function RegisterForm() {
@@ -12,9 +12,8 @@ function RegisterForm() {
     email: "",
   });
 
-  console.log(user)
+  let history = useHistory();
 
-  const dispatch = useDispatch();
 
   function handleChange(evt) {
     const value = evt.target.value;
@@ -27,10 +26,14 @@ function RegisterForm() {
   const handelSubmit = async (e) => {
     e.preventDefault();
 
-    let reg = await dispatch(Register(user));
-
-    await console.log(reg);
-
+   await axios
+      .post(`http://localhost:8080/api/signup`, user)
+      .then((data) => {
+        history.push("login");
+      })
+      .catch((error) => {
+        console.log(error.response);
+      });
   };
 
   return (

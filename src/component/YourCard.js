@@ -5,9 +5,14 @@ import ProductCard from "./ProductCard";
 import FormBuy from "./FormBuy";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { useEffect } from "react";
 
 function YourCard() {
   const products = useSelector((state) => state.shop.cart);
+
+  useEffect(() => {
+
+  }, [products])
 
   let productCard = <p>Khong co san pham</p>;
 

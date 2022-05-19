@@ -28,9 +28,9 @@ export default function ProductOffer(props) {
 
   return (
     <div className="productOffer container">
-      <h3>Similar Product</h3>
+      <h3 className="m-5">Similar Product</h3>
       <div>
-        <ScrollMenu>
+        <ScrollMenu className="productScroll">
         {productCategory.map((product) => (
             <Link
               className=" text-secondary text-decoration-none"
@@ -38,6 +38,7 @@ export default function ProductOffer(props) {
               key={product.id}
             >
               <CardItem
+                type="min"
                 className="productCard"
                 image={product.image}
                 name={product.name}

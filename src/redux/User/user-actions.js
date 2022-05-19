@@ -18,33 +18,15 @@ export const signUp = (user) => {
   };
 };
 
-export const Register = (user) => {
+
+export const signOut = () => {
   return (dispatch) => {
-    axios
-      .post(`http://localhost:8080/api/signup`, user)
-      .then((data) => {
-        dispatch({
-          type: "REGISTER",
-          payload: data,
-        });
-      })
-      .catch((error) => {
-        console.log(error.response);
-      });
+
+    dispatch({
+      type: "SIGN_OUT",
+    });
   };
 };
-
-// export const signOut = () => {
-//   return (dispatch) => {
-//     dispatch({
-//       type: "CLEAR_TODOS",
-//     });
-
-//     dispatch({
-//       type: "SIGN_OUT",
-//     });
-//   };
-// };
 
 // export const loadUser = () => {
 //   return (dispatch, getState) => {

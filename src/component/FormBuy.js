@@ -32,13 +32,12 @@ export default function FormBuy() {
   }
 
   const handleOrder = async (orderId) => {
-
     const postOrders = async (orderDetails) => {
       await axios
         .post("http://localhost:8080/api/order/detail", orderDetails)
         .then(
           (response) => {
-            setIsReady(false)
+            setIsReady(false);
           },
           (error) => {
             setIsReady(true);
@@ -57,16 +56,11 @@ export default function FormBuy() {
       });
 
       //check
-      await console.log(orderDetails);
 
       await postOrders(orderDetails);
     });
 
-    // if (isReady == false) {
-    //   handelSucces();
-    // } else {
-    //   alert("Đặt hàng không thành công");
-    // }
+    await handelSucces();
   };
 
   const handelSucces = async () => {
@@ -86,8 +80,6 @@ export default function FormBuy() {
       },
       []
     );
-
-
   };
 
   return (

@@ -16,7 +16,7 @@ export default function CardItem(props) {
 
   return (
     <Card className="cardMain">
-      <Card.Img variant="top" src={image}  />
+      <Card.Img variant="top" className={`${props.type}`} src={image}  />
       <Card.Body className="mx-auto">
         <Card.Text>{props.name}</Card.Text>
         <Card.Text className="">{props.price}đ</Card.Text>

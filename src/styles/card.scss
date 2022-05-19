@@ -1,23 +1,29 @@
-.cardMain{
-    border: none;
-    width: 250px;
+.cardMain {
+  border: none;
+  
 
-    img {
-        max-width: 520px;
-        max-height: 200px;
-    }
+  .big {
+      max-width: 520px;
+      max-height: 200px;
+    
+  }
 
-    &:hover{
-        cursor: pointer;
-    }
+  .min {
+    width: 200px;
+    height: 150px;
+  }
 
-    .card-text{
-        text-align: center;
-    }
+  &:hover {
+    cursor: pointer;
+  }
+
+  .card-text {
+    text-align: center;
+  }
 }
 
-@media only screen and (max-width: 720px){
-    .card{
-        width: 100px !important;
-    }
+@media only screen and (max-width: 720px) {
+  .card {
+    width: 100px !important;
+  }
 }

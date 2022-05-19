@@ -35,7 +35,7 @@ export default function ProductDetail() {
               <ProductCarousel image={product.image} />
             </div>
             <div className="productDiscription mb-5">
-              <h3>{product.name}</h3>
+              <h3 className="mb-3">{product.name}</h3>
               <div className="h5 mb-3 mt-2">
                 <span>{product.price} VNĐ</span>
               </div>

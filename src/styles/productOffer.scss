@@ -1,14 +1,13 @@
 .productOffer{
     margin-top: 50px !important;
 
+    .react-horizontal-scrolling-menu--scroll-container{
+        justify-content: space-around !important;
+    }
+
     h3{
         margin-left: 42px;
     }
-
-    .cardMain {
-        width: 320px;
-    }
-
 }
 
 @media only screen and (max-width: 720px){
